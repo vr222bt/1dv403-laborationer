@@ -5,7 +5,10 @@ window.onload = function(){
 	// I denna funktion ska du skriva koden för att hantera "spelet"
 	var convertString = function(str){
 		// Plats för förändring.	
-	var newStr = "";	
+	var newStr = "";
+	if (str.length === 0) {
+		throw new Error("Var god ange något en sträng att omvandla!");
+	}
 	for (var i = 0; i < str.length; i++) {
 		switch (str.charAt(i)) {
 			//Changes A & a to # and adds to new string(newStr)
@@ -23,6 +26,7 @@ window.onload = function(){
 			case str.charAt(i).toUpperCase():
 				newStr += str.charAt(i).toLowerCase();
 				break;
+			//Adds character to new string
 			default:
 				newStr += str.charAt(i);
 				break;
