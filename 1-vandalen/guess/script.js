@@ -1,7 +1,6 @@
 "use strict";
 
 window.onload = function(){
-	
 	var secret = 50; // Detta tal behöver bytas ut mot ett slumpat tal.
 	
 	// I denna funktion ska du skriva koden för att hantera "spelet"
@@ -11,12 +10,25 @@ window.onload = function(){
 			
 		// Plats för förändring.
 
-
+		var count =+ 1;
 		// Returnera exempelvis: 
 		// [true, "Grattis du vann! Det hemliga talet var X och du behövde Y gissningar för att hitta det."]
+		if (secret == number) {
+			return [true, "Grattis du vann! Det hemliga talet var " + secret + " och du behövde " + count + " gissningar för att hitta det"];
+		}
 		// [false, "Det hemliga talet är högre!"]
+		if (secret > number) {
+			return [false, "Det hemliga talet är högre"];
+		}
 		// [false, "Det hemliga talet är lägre!"]
-		// [false, "Talet är utanför intervallet 0 - 100"]		
+		if (secret < number) {
+			return [false, "Det hemliga talet är lägre!"];
+		}
+		// [false, "Talet är utanför intervallet 0 - 100"]
+		if (number > 100 || number < 0) {
+			return [false, "Talet är utanför intervallet 0 - 100"]
+		}
+		
 	};
 	
 	// ------------------------------------------------------------------------------
