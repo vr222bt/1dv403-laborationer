@@ -4,7 +4,21 @@ window.onload = function(){
 
 	// I denna funktion ska du skriva koden för att hantera "spelet"
 	var convertString = function(str){
-		// Plats för förändring.		
+		// Plats för förändring.	
+	var i = 0;	
+	while(i <= str.length){
+		var character = str.charAt(i);
+		if (character === character.toUpperCase()) {
+			character = character.toLowerCase();
+		}
+		else {
+			character = character.toUpperCase();
+		}
+		i += 1;
+		
+		
+	};
+
 		// Returnera den konverterade strängen.
 		// Vid fel, kasta ett undantag med ett meddelande till användaren. 
 	
