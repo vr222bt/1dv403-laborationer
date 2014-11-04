@@ -19,7 +19,7 @@ window.onload = function(){
 				throw ("\"" + number +"\" är inget tal. Du måste ange ett tal!");
 			}
 			if (number > 100 || number < 0) {
-				throw  ("Talet är utanför intervallet 0 - 100");
+				throw  ("Du måste ange ett tal mellan 0 och 100");
 			}
 		} 
 		catch (e) {
@@ -29,7 +29,7 @@ window.onload = function(){
 			return [true, "Grattis du vann! Det hemliga talet var " + secret + " och du behövde " + count + " gissningar för att hitta det"];
 		}
 		if (secret > number) {
-			return [false, "Det hemliga talet är högre"];
+			return [false, "Det hemliga talet är högre!"];
 		}
 		if (secret < number) {
 			return [false, "Det hemliga talet är lägre!"];
