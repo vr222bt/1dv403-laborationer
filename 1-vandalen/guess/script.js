@@ -13,22 +13,24 @@ window.onload = function(){
 		// Plats för förändring.
 
 		count += 1;
-		if (isNaN(number)) {
-			return [false, "Du måste ange ett heltal"];
+		
+		try {
+			if (isNaN(number)) {
+				throw ("\"" + number +"\" är inget tal. Du måste ange ett tal!");
+			}
+			if (number > 100 || number < 0) {
+				throw  ("Talet är utanför intervallet 0 - 100");
+			}
+		} 
+		catch (e) {
+			return [false, e];
 		}
-		// [true, "Grattis du vann! Det hemliga talet var X och du behövde Y gissningar för att hitta det."]
 		if (secret == number) {
 			return [true, "Grattis du vann! Det hemliga talet var " + secret + " och du behövde " + count + " gissningar för att hitta det"];
 		}
-		// [false, "Talet är utanför intervallet 0 - 100"]
-		if (number > 100 || number < 0) {
-			return [false, "Talet är utanför intervallet 0 - 100"];
-		}
-		// [false, "Det hemliga talet är högre!"]
 		if (secret > number) {
 			return [false, "Det hemliga talet är högre"];
 		}
-		// [false, "Det hemliga talet är lägre!"]
 		if (secret < number) {
 			return [false, "Det hemliga talet är lägre!"];
 		}
