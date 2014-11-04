@@ -7,11 +7,15 @@ window.onload = function(){
 	var guess = function(number){
 		console.log("Det hemliga talet: " + secret); // Du når den yttre variabeln secret innifrån funktionen.
 		console.log("Du gissade: " + number); // Detta nummer är det som användaren gissade på.
-			
+		
 		// Plats för förändring.
-
+		var max = 100;
+		var min = 0;
+		secret = Math.floor( Math.random() * (max-min)+1 )+min; Math.floor( Math.random() * (100-1)+1) + 1; Math.floor( Math.random() * 100)+1;
 		count += 1;
-		// Returnera exempelvis: 
+		if (isNaN(number)) {
+			return [false, "Du måste ange ett heltal"];
+		}
 		// [true, "Grattis du vann! Det hemliga talet var X och du behövde Y gissningar för att hitta det."]
 		if (secret == number) {
 			return [true, "Grattis du vann! Det hemliga talet var " + secret + " och du behövde " + count + " gissningar för att hitta det"];
