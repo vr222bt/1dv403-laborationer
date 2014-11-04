@@ -1,7 +1,9 @@
 "use strict";
 
 window.onload = function(){
-	var secret = 50; // Detta tal behöver bytas ut mot ett slumpat tal.
+	var max = 100;
+	var min = 0;
+	var	secret = Math.floor( Math.random() * (max-min)+1 )+min; Math.floor( Math.random() * (100-1)+1) + 1; Math.floor( Math.random() * 100)+1;
 	var count = 0;
 	// I denna funktion ska du skriva koden för att hantera "spelet"
 	var guess = function(number){
@@ -9,9 +11,7 @@ window.onload = function(){
 		console.log("Du gissade: " + number); // Detta nummer är det som användaren gissade på.
 		
 		// Plats för förändring.
-		var max = 100;
-		var min = 0;
-		secret = Math.floor( Math.random() * (max-min)+1 )+min; Math.floor( Math.random() * (100-1)+1) + 1; Math.floor( Math.random() * 100)+1;
+
 		count += 1;
 		if (isNaN(number)) {
 			return [false, "Du måste ange ett heltal"];
