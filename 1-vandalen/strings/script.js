@@ -5,7 +5,7 @@ window.onload = function(){
 	// I denna funktion ska du skriva koden för att hantera "spelet"
 	var convertString = function(str){
 		// Plats för förändring.	
-	var newStr;	
+	var newStr = "";	
 	for (var i = 0; i < str.length; i++) {
 		if (str.charAt(i) === str.charAt(i).toUpperCase()) {
 			newStr += str.charAt(i).toLowerCase();
