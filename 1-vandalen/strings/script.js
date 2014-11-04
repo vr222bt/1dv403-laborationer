@@ -7,6 +7,14 @@ window.onload = function(){
 		// Plats för förändring.	
 	var newStr = "";	
 	for (var i = 0; i < str.length; i++) {
+		if (str.charAt(i) === "A") {
+			newStr += "#";
+			
+		}
+		if (str.charAt(i) === "a") {
+			newStr += "#";
+			
+		}
 		if (str.charAt(i) === str.charAt(i).toUpperCase()) {
 			newStr += str.charAt(i).toLowerCase();
 		}
