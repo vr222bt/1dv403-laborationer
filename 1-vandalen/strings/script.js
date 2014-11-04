@@ -7,19 +7,26 @@ window.onload = function(){
 		// Plats för förändring.	
 	var newStr = "";	
 	for (var i = 0; i < str.length; i++) {
-		if (str.charAt(i) === "A") {
-			newStr += "#";
+		switch (str.charAt(i)) {
+			//Changes A & a to # and adds to new string(newStr)
+			case 'a':
+				newStr += "#";
+				break;
+			case "A":
+				newStr += "#";
+				break;
+			//Changes lowercase to uppercase and adds to new string(newStr)	
+			case str.charAt(i).toLowerCase():
+				newStr += str.charAt(i).toUpperCase();
+				break;
+			//Changes uppercase to lowercase and adds to new string(newStr)	
+			case str.charAt(i).toUpperCase():
+				newStr += str.charAt(i).toLowerCase();
+				break;
+			default:
+				newStr += str.charAt(i);
+				break;
 			
-		}
-		if (str.charAt(i) === "a") {
-			newStr += "#";
-			
-		}
-		if (str.charAt(i) === str.charAt(i).toUpperCase()) {
-			newStr += str.charAt(i).toLowerCase();
-		}
-		else {
-			newStr += str.charAt(i).toUpperCase();
 		}
 	}
 	return newStr;
