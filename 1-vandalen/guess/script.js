@@ -3,7 +3,7 @@
 window.onload = function(){
 	var max = 100;
 	var min = 0;
-	var	secret = Math.floor( Math.random() * (max-min)+1 )+min; Math.floor( Math.random() * (100-1)+1) + 1; Math.floor( Math.random() * 100)+1;
+	var	secret = Math.floor( Math.random() * (max-min)+1 )+min;
 	var count = 0;
 	// I denna funktion ska du skriva koden för att hantera "spelet"
 	var guess = function(number){
