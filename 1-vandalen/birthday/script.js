@@ -5,9 +5,24 @@ window.onload = function(){
 	
 	var birthday = function(date){
 		
+	//Gets users birthday	
+	var bday = new Date(date);
+	var month = bday.getMonth();
+	var day = bday.getDate();
+
+    //Gets todays date
+	var now = new Date();
+	//Gets the current year for creating nextBirthay object for user
+	var year = now.getFullYear();
+	
+	//Users next birthday
+	var nextBirthday = new Date(year, month, day);
+    return ((nextBirthday.getTime() - now.getTime())/(1000*60*60*24));
+	
+		
 
 
-			// Din kod här.
+			
 
 
 
