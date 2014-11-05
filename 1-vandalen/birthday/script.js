@@ -5,31 +5,31 @@ window.onload = function(){
 	
 	
 	var birthday = function(date){
-	 //Checks if the date input can be read as a valid date	
+	//Checks if the date input can be read as a valid date	
 	if(! Date.parse(date.toString())) {
 		throw new Error ("Du måste ange ett giltigt datum(ÅÅÅÅ-MM-DD). Försök igen.");
 	}
-
 	var bday = new Date(date);
+	var now = new Date();
+	//Makes sure we're not dealing with time travelers
+    if (bday > now) {
+    	throw new Error("Är du säker på att du är född i framtiden?");
+    }
+	//Creates users next birthday
 	var month = bday.getMonth();
 	var day = bday.getDate();
-
-    //Gets todays date
-	var now = new Date();
-	//Gets the current year for creating nextBirthay object for user
 	var year = now.getFullYear();
-	
+	var nextBirthday = new Date(year, month, day);
+	if (nextBirthday < now) {
+		nextBirthday.setFullYear(year+1);
+	}
 	//Sets the time to 00:00 so able to compare to nextBirthday without taking time into account
 	now.setHours(0);
 	now.setMinutes(0);
 	now.setSeconds(0);
 	now.setMilliseconds(0);
 	
-	//Users next birthday
-	var nextBirthday = new Date(year, month, day);
-	if (nextBirthday < now) {
-		nextBirthday.setFullYear(year+1);
-	}
+	//Returns time until birthday in days
     return Math.round(((nextBirthday.getTime() - now.getTime())/(1000*60*60*24)));
     
 	};
