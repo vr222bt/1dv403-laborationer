@@ -3,11 +3,13 @@
 window.onload = function(){
 
 	
+	
 	var birthday = function(date){
-	if (date.length === 0 || isNaN(date)) {
-		throw new Error("Ange din födelsdag som ÅÅÅÅ-MM-DD");
-	}	
-	//Gets users birthday	
+	 //Checks if the date input can be read as a valid date	
+	if(! Date.parse(date.toString())) {
+		throw new Error ("Du måste ange ett giltigt datum(ÅÅÅÅ-MM-DD). Försök igen.");
+	}
+
 	var bday = new Date(date);
 	var month = bday.getMonth();
 	var day = bday.getDate();
@@ -29,15 +31,7 @@ window.onload = function(){
 		nextBirthday.setFullYear(year+1);
 	}
     return Math.round(((nextBirthday.getTime() - now.getTime())/(1000*60*60*24)));
-	
-		
-
-
-			
-
-
-
-
+    
 	};
 	// ------------------------------------------------------------------------------
 
