@@ -4,9 +4,9 @@ window.onload = function(){
 
 	
 	var birthday = function(date){
-//	if (date.length === 0) {
-//		throw new error("Ange din födelsdag som ÅÅÅÅ-MM-DD");
-//	}	
+	if (date.length === 0 || isNaN(date)) {
+		throw new Error("Ange din födelsdag som ÅÅÅÅ-MM-DD");
+	}	
 	//Gets users birthday	
 	var bday = new Date(date);
 	var month = bday.getMonth();
