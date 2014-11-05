@@ -4,7 +4,9 @@ window.onload = function(){
 
 	
 	var birthday = function(date){
-		
+//	if (date.length === 0) {
+//		throw new error("Ange din födelsdag som ÅÅÅÅ-MM-DD");
+//	}	
 	//Gets users birthday	
 	var bday = new Date(date);
 	var month = bday.getMonth();
@@ -15,9 +17,18 @@ window.onload = function(){
 	//Gets the current year for creating nextBirthay object for user
 	var year = now.getFullYear();
 	
+	//Sets the time to 00:00 so able to compare to nextBirthday without taking time into account
+	now.setHours(0);
+	now.setMinutes(0);
+	now.setSeconds(0);
+	now.setMilliseconds(0);
+	
 	//Users next birthday
 	var nextBirthday = new Date(year, month, day);
-    return Math.floor(((nextBirthday.getTime() - now.getTime())/(1000*60*60*24)));
+	if (nextBirthday < now) {
+		nextBirthday.setFullYear(year+1);
+	}
+    return Math.round(((nextBirthday.getTime() - now.getTime())/(1000*60*60*24)));
 	
 		
 
