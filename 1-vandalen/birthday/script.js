@@ -17,7 +17,7 @@ window.onload = function(){
 	
 	//Users next birthday
 	var nextBirthday = new Date(year, month, day);
-    return ((nextBirthday.getTime() - now.getTime())/(1000*60*60*24));
+    return Math.floor(((nextBirthday.getTime() - now.getTime())/(1000*60*60*24)));
 	
 		
 
