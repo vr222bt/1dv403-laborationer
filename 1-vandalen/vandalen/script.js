@@ -6,9 +6,11 @@ var makePerson = function(persArr){
 	var ages = [];
 	var names = [];
 
-    persArr.forEach(function(element, index, array){
-        ages[index] = array[index].age;
-        names[index] = array[index].name;
+    ages = persArr.map(function(array){
+        return array.age;
+    });
+    names = persArr.map(function(array){
+        return array.name;
     });
     console.log(ages);
     console.log(names);
