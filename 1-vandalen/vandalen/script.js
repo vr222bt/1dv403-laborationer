@@ -19,18 +19,18 @@ var makePerson = function(persArr){
     });
     console.log("Åldersumman:" + ageSum);
     
+    //Creates object and properties
+    var object = {};
     //Calculates average age
-    var ageAverage = Math.round(ageSum/ages.length);
-    console.log("Medelålder:" + ageAverage);
-    
+    object.ageAverage = Math.round(ageSum/ages.length);
+    console.log("Medelålder:" + object.ageAverage);
     
     //Highest age
-    var ageMax = Math.max.apply(Math,ages);
-    console.log("Högsta ålder:" + ageMax);
-    
+    object.ageMax = Math.max.apply(Math,ages);
+    console.log("Högsta ålder:" + object.ageMax);
     //Lowest age
-    var ageMin = Math.min.apply(Math,ages);
-    console.log("Lägsta ålder:" + ageMin);
+    object.ageMin = Math.min.apply(Math,ages);
+    console.log("Lägsta ålder:" + object.ageMin);
     
     
 };
@@ -38,3 +38,4 @@ var makePerson = function(persArr){
 var data = [{name: "John Häggerud", age: 37}, {name: "Johan Leitet", age: 36}, {name: "Mats Loock", age: 46}];
 var result = makePerson(data);
 // console.log(result);
+//test
