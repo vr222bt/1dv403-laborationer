@@ -3,16 +3,19 @@
 var makePerson = function(persArr){
 
 
-	// Din kod här...
-    var ages = [];
-    ages = persArr.map(function(person){
-        return person.age;
-    });
-    
+	var ages = [];
+	var names = [];
 
+    persArr.forEach(function(element, index, array){
+        ages[index] = array[index].age;
+        names[index] = array[index].name;
+    });
+    console.log(ages);
+    console.log(names);
+    
     //Sums ages
-    var ageSum = ages.reduce(function(a,b){
-        return a+b;
+    var ageSum = ages.reduce(function(ageA,ageB){
+        return ageA+ageB;
     });
     console.log("Åldersumman:" + ageSum);
     
@@ -20,16 +23,18 @@ var makePerson = function(persArr){
     var ageAverage = Math.round(ageSum/ages.length);
     console.log("Medelålder:" + ageAverage);
     
+    
     //Highest age
-    var ageMax = Math.max(ages);
+    var ageMax = Math.max.apply(Math,ages);
     console.log("Högsta ålder:" + ageMax);
     
     //Lowest age
-    var ageMin = Math.min(ages);
-    console.log("Högsta ålder:" + ageMin);
+    var ageMin = Math.min.apply(Math,ages);
+    console.log("Lägsta ålder:" + ageMin);
     
     
 };
 
 var data = [{name: "John Häggerud", age: 37}, {name: "Johan Leitet", age: 36}, {name: "Mats Loock", age: 46}];
-makePerson(data);
+var result = makePerson(data);
+// console.log(result);
