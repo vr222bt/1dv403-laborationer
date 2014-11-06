@@ -31,7 +31,10 @@ var makePerson = function(persArr){
     object.minAge = Math.min.apply(Math,ages);
     console.log("Lägsta ålder:" + object.minAge);
     
-    names = names.sort();
+	function localSort(a, b) {
+    return a.toString().localeCompare(b.toString());
+    }
+    names = names.sort(localSort);
 
 
     //Makes names into one string
