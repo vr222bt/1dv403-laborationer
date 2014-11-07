@@ -11,6 +11,13 @@ var makePerson = function(persArr){
     names = persArr.map(function(person){
         return person.name;
     });
+    //Checks if age is a number
+    for (var i = 0; i < ages.length; i++) {
+        if (isNaN(ages[i])) {
+            throw new Error(ages[i] + " is not a valid age");
+        }
+    }
+
     //Sums ages
     var ageSum = ages.reduce(function(ageA,ageB){
         return ageA+ageB;
