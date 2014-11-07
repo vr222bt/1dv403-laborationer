@@ -20,7 +20,12 @@ var makePerson = function(persArr){
             throw new Error(ages[i] + " is not a valid age");
         }
     }
-
+    //Checks if name is a string
+    for (var i = 0; i < names.length; i++) {
+        if (typeof names[i] != "string") {
+            throw new Error(names[i] + " is not a valid name")
+        }
+    }
     //Sums ages
     var ageSum = ages.reduce(function(ageA,ageB){
         return ageA+ageB;
