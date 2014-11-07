@@ -2,7 +2,7 @@
 
 var makePerson = function(persArr){
 
-
+    //Creates arrays for ages and names
 	var ages = [];
 	var names = [];
     ages = persArr.map(function(person){
