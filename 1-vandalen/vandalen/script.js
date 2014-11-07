@@ -11,9 +11,12 @@ var makePerson = function(persArr){
     names = persArr.map(function(person){
         return person.name;
     });
-    //Checks if age is a number
+    //Checks if age is a valid number
+    function isInteger(age) {
+        return (typeof age === 'number') && (age % 1 === 0);
+    }
     for (var i = 0; i < ages.length; i++) {
-        if (isNaN(ages[i])) {
+        if (!isInteger(ages[i])) {
             throw new Error(ages[i] + " is not a valid age");
         }
     }
