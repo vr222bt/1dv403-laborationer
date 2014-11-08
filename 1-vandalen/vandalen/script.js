@@ -6,12 +6,22 @@ var makePerson = function(persArr){
 	var ages = [];
 	var names = [];
     ages = persArr.map(function(person){
-        return person.age;
+        if (person.hasOwnProperty("age")) {
+            return person.age;
+        }
+        //Gets the age if the input was date of birth
+        if (person.hasOwnProperty("born")) {
+            return new Date().getFullYear() - new Date(person.born).getFullYear(); 
+        }
+
+        
+        
     });
     names = persArr.map(function(person){
         return person.name;
     });
-    //Checks if age is a valid number
+    
+    //Checks if age is a valid number (Screws up the test?!)
     function isInteger(age) {
         return (typeof age === 'number') && (age % 1 === 0);
     }
@@ -20,12 +30,14 @@ var makePerson = function(persArr){
             throw new Error(ages[i] + " is not a valid age");
         }
     }
+    
     //Checks if name is a string
     for (var i = 0; i < names.length; i++) {
-        if (typeof names[i] != "string") {
-            throw new Error(names[i] + " is not a valid name")
+        if (typeof names[i] !== "string") {
+            throw new Error(names[i] + " is not a valid name");
         }
     }
+    
     //Sums ages
     var ageSum = ages.reduce(function(ageA,ageB){
         return ageA+ageB;
