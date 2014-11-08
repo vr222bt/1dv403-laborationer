@@ -3,6 +3,9 @@
 var makePerson = function(persArr){
 
     //Creates arrays for ages and names
+    if (!Array.isArray(persArr)) {
+        throw new Error("Input must be an array") 
+    }
 	var ages = [];
 	var names = [];
     ages = persArr.map(function(person){
