@@ -11,10 +11,17 @@ window.onload = function(){
 	}
 	var bday = new Date(date);
 	var now = new Date();
+	//Sets the time to 00:00 so able to compare to nextBirthday without taking time into account
+	now.setHours(0);
+	now.setMinutes(0);
+	now.setSeconds(0);
+	now.setMilliseconds(0);
+	
 	//Makes sure we're not dealing with time travelers
     if (bday > now) {
     	throw new Error("Är du säker på att du är född i framtiden?");
     }
+
 	//Creates users next birthday
 	var month = bday.getMonth();
 	var day = bday.getDate();
@@ -24,18 +31,8 @@ window.onload = function(){
 	if (nextBirthday < now) {
 		nextBirthday.setFullYear(year+1);
 	}
-	//Sets the time to 00:00 so able to compare to nextBirthday without taking time into account
-	now.setHours(0);
-	now.setMinutes(0);
-	now.setSeconds(0);
-	now.setMilliseconds(0);
-	
+
 	var daysUntilBirthday = Math.round(((nextBirthday.getTime() - now.getTime())/(1000*60*60*24)));
-	//Returns time until birthday in days
-	if (daysUntilBirthday === 365) {
-		return 0;
-	}
-	else
     return daysUntilBirthday; 
     
 	};
