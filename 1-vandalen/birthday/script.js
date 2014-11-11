@@ -20,6 +20,7 @@ window.onload = function(){
 	var day = bday.getDate();
 	var year = now.getFullYear();
 	var nextBirthday = new Date(year, month, day);
+	//Adds a year if the person already had his/her birthday this year
 	if (nextBirthday < now) {
 		nextBirthday.setFullYear(year+1);
 	}
@@ -29,8 +30,13 @@ window.onload = function(){
 	now.setSeconds(0);
 	now.setMilliseconds(0);
 	
+	var daysUntilBirthday = Math.round(((nextBirthday.getTime() - now.getTime())/(1000*60*60*24)));
 	//Returns time until birthday in days
-    return Math.round(((nextBirthday.getTime() - now.getTime())/(1000*60*60*24)));
+	if (daysUntilBirthday === 365) {
+		return 0;
+	}
+	else
+    return daysUntilBirthday; 
     
 	};
 	// ------------------------------------------------------------------------------
