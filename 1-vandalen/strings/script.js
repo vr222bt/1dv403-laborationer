@@ -4,10 +4,10 @@ window.onload = function(){
 
 	// I denna funktion ska du skriva koden för att hantera "spelet"
 	var convertString = function(str){
-		// Plats för förändring.	
+	// Plats för förändring.	
 	var newStr = "";
 	if (str.length === 0) {
-		throw new Error("Var god ange något en sträng att omvandla!");
+		throw new Error("Var god ange en sträng att omvandla!");
 	}
 	for (var i = 0; i < str.length; i++) {
 		switch (str.charAt(i)) {

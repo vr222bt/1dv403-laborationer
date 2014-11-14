@@ -16,15 +16,12 @@ var makePerson = function(persArr){
         if (person.hasOwnProperty("born")) {
             return new Date().getFullYear() - new Date(person.born).getFullYear(); 
         }
-
-        
-        
     });
     names = persArr.map(function(person){
         return person.name;
     });
     
-    //Checks if age is a valid number (Screws up the test?!)
+    //Checks if age is a valid number
     function isInteger(age) {
         return (typeof age === 'number') && (age % 1 === 0);
     }
@@ -33,7 +30,6 @@ var makePerson = function(persArr){
             throw new Error(ages[i] + " is not a valid age");
         }
     }
-    
     //Checks if name is a string
     for (var i = 0; i < names.length; i++) {
         if (typeof names[i] !== "string") {
@@ -45,23 +41,22 @@ var makePerson = function(persArr){
     var ageSum = ages.reduce(function(ageA,ageB){
         return ageA+ageB;
     });
-    //Creates object and properties
-    var object = {};
+    //Creates object
+    var people = {};
     //Calculates average age
-    object.averageAge = Math.round(ageSum/ages.length);
+    people.averageAge = Math.round(ageSum/ages.length);
     //Highest age
-    object.maxAge = Math.max.apply(Math,ages);
+    people.maxAge = Math.max.apply(Math,ages);
     //Lowest age
-    object.minAge = Math.min.apply(Math,ages);
+    people.minAge = Math.min.apply(Math,ages);
 	function localSort(a, b) {
     return a.toString().localeCompare(b.toString());
     }
     names = names.sort(localSort);
-    //Makes names into one string
-    object.names = names.reduce(function(name1, name2){
+    people.names = names.reduce(function(name1, name2){
         return name1 + ", " + name2;
     });
-    return object;
+    return people;
     
 };
 

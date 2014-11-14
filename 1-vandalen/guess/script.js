@@ -9,9 +9,6 @@ window.onload = function(){
 	var guess = function(number){
 		console.log("Det hemliga talet: " + secret); // Du når den yttre variabeln secret innifrån funktionen.
 		console.log("Du gissade: " + number); // Detta nummer är det som användaren gissade på.
-		
-		// Plats för förändring.
-
 		count += 1;
 		
 		try {
