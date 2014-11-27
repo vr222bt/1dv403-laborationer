@@ -1,4 +1,4 @@
 "use strict";
-Function Message(){
+function Message(message, date){
     
 }
