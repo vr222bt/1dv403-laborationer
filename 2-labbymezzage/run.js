@@ -6,6 +6,16 @@ var messageBoard = {
     init:  function(){
         var textarea = document.querySelector("#text");
         var button = document.querySelector("#button");
+        
+        textarea.onkeypress = function(e){
+          if (!e) {  
+              e = window.event; 
+              }  
+          if (e.keyCode === 13 && !e.shiftKey) {
+              e.preventDefault();
+              messageBoard.createMessage(textarea);
+          }
+        };
     
         button.addEventListener("click", function(e){
         e.preventDefault();
