@@ -64,7 +64,7 @@ var messageBoard = {
         div1.appendChild(div2);
         //time
         var date = document.createElement("footer");
-        date.innerHTML = messageBoard.messages[messageID].getDate();
+        date.innerHTML = messageBoard.messages[messageID].getDate().toLocaleTimeString();
         div2.appendChild(date);
         
         //Delete event

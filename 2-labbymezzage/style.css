@@ -57,6 +57,7 @@ h1:first-letter
         margin-bottom: 10px;
         border-radius: 10px;
         background-color: #DFE2DB ;
+        word-wrap: break-word;
     }
     
 .message p
@@ -75,6 +76,7 @@ h1:first-letter
     
 img
     {
+        float: right;
         right: 5px;
         width: 15px;
     }
