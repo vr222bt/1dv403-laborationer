@@ -24,3 +24,16 @@ Message.prototype.getHTMLText = function(){
     return this.getText().replace("\n","<br />");
 };
 
+Message.prototype.getDateText = function(){
+    var months = ["Januari", "Februari", "Mars", "April", "Maj", "Juni", "Juli", "Augusti", "September","Oktober", "November", "December"];
+    var month = months[this.getDate().getMonth()];
+    var day = this.getDate().getDate();
+    var year = this.getDate().getFullYear();
+    var hours = this.getDate().getHours();
+    var minutes = this.getDate().getMinutes();
+    return day + " " + month +" "+ year +" "+ hours + ":" + minutes;
+    
+    
+};
+    
+

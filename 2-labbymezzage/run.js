@@ -38,6 +38,13 @@ var messageBoard = {
         imgDelete.src = "cross-button.png";
         aDelete.appendChild(imgDelete);
         div2.appendChild(aDelete);
+        //Clockbutton
+        var aTime = document.createElement("a");
+        aTime.href = "#";
+        var imgTime = document.createElement("img");
+        imgTime.src = "clock-icon.jpg";
+        aTime.appendChild(imgTime);
+        div2.appendChild(aTime);
         //Message
         var p = document.createElement("p");
         p.innerHTML = messageBoard.messages[messageID].getHTMLText();
@@ -47,12 +54,21 @@ var messageBoard = {
         var date = document.createElement("footer");
         date.innerHTML = messageBoard.messages[messageID].getDate();
         div2.appendChild(date);
-
+        
+        //Delete event
         aDelete.onclick = function(e){
           e.preventDefault();  
           messageBoard.deleteMessage(messageID);
         };
+        //Time event
+        aTime.onclick = function(e){
+            e.preventDefault();
+            messageBoard.showTime(messageID);
+        };
     
+    },
+    showTime: function(messageID){
+        alert("Inlägget skapades den " + messageBoard.messages[messageID].getDateText());
     },
     deleteMessage: function(messageID){
         if (confirm("Är du säker på att du vill ta bort det här meddelandet?")) {
