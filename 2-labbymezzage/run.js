@@ -32,6 +32,8 @@ var messageBoard = {
         var mess = new Message(messText, new Date());
         messageBoard.messages.push(mess);
         messageBoard.renderMessages();
+        messageBoard.freshTextarea(textarea);
+        
         
         
         
@@ -75,6 +77,7 @@ var messageBoard = {
             e.preventDefault();
             messageBoard.showTime(messageID);
         };
+        
     
     },
     showTime: function(messageID){
@@ -92,8 +95,19 @@ var messageBoard = {
         
         //Render all messages
         for (var i = 0; i < messageBoard.messages.length; ++i) {
-            messageBoard.renderMessage(i)
+            messageBoard.renderMessage(i);
         }
+        messageBoard.messageCounter();
+    },
+    freshTextarea: function(textarea){
+        textarea.value = "";
+    },
+    messageCounter: function(){
+        var counter = messageBoard.messages.length;
+        var div1 = document.querySelector("#messages");
+        var numMess = document.createElement("p");
+        numMess.innerHTML = "Antal meddelanden: " + counter;
+        div1.appendChild(numMess);
     }
 };
 
