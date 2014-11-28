@@ -106,6 +106,7 @@ var messageBoard = {
         var counter = messageBoard.messages.length;
         var div1 = document.querySelector("#messages");
         var numMess = document.createElement("p");
+        numMess.id = "counter";
         numMess.innerHTML = "Antal meddelanden: " + counter;
         div1.appendChild(numMess);
     }

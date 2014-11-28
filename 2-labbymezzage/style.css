@@ -78,3 +78,9 @@ img
         right: 5px;
         width: 15px;
     }
+    
+#counter
+    {
+        text-align: right;
+        margin-right: 50px;
+    }
