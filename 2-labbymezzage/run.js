@@ -25,7 +25,7 @@ var messageBoard = {
     },
     createMessage: function(textarea){
         var messText = textarea.value;
-        //No empty messages please (IT BROKE?!)
+        //No empty messages please
         if (messText === "") {
             return false;
         }
