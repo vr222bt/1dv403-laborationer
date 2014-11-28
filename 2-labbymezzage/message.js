@@ -29,9 +29,9 @@ Message.prototype.getDateText = function(){
     var month = months[this.getDate().getMonth()];
     var day = this.getDate().getDate();
     var year = this.getDate().getFullYear();
-    var hours = this.getDate().getHours();
-    var minutes = this.getDate().getMinutes();
-    return day + " " + month +" "+ year +" "+ hours + ":" + minutes;
+    var time = this.getDate().toLocaleTimeString();
+
+    return day + " " + month +" "+ year +" "+ time;
     
     
 };
