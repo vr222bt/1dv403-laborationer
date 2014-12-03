@@ -2,6 +2,7 @@
 
 var Memory = {
     bricks: [],
+    
     init: function(){
         var cols = 4;
         var rows = 4;
@@ -16,6 +17,8 @@ var Memory = {
         var table = document.createElement("table");
         var tbody = document.createElement("tbody");
         table.appendChild(tbody);
+        
+        var brickID = 0;
         for (var i = 0; i < rows; i++) {
             var tr = document.createElement("tr");
             tbody.appendChild(tr);
@@ -28,14 +31,22 @@ var Memory = {
                 brickDefault.src = "pics/0.png";
                 a.appendChild(brickDefault);
                 td.appendChild(a);
-                a.onclick = Memory.turnBrick;
+                Memory.turnBrick(brickID, a);
+                console.log(brickID);
+                brickID +=1;
+                
             }
         }
         gameTable.appendChild(table);
        
    },
-   turnBrick: function(){
-       alert(Memory.bricks);
+   turnBrick: function(brickID, a){
+       a.onclick = function(e){
+           e.preventDefault;
+           var img = a.querySelector("img");
+           img.src = "pics/" + Memory.bricks[brickID] + ".png";
+           
+       };
    }
 };
 
