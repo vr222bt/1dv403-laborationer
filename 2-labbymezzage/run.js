@@ -3,7 +3,7 @@
 var messageBoard = {
     
     messages: [], 
-    init:  function(){
+    init:  function(){  
         var textarea = document.querySelector("#text");
         var button = document.querySelector("#button");
         
@@ -25,7 +25,6 @@ var messageBoard = {
     },
     createMessage: function(textarea){
         var messText = textarea.value;
-        //No empty messages please
         if (messText === "") {
             return false;
         }
@@ -117,3 +116,5 @@ var messageBoard = {
 };
 
 window.onload = messageBoard.init;
+
+
