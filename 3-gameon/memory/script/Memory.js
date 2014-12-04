@@ -2,6 +2,7 @@
 
 var Memory = {
     bricks: [],
+    brickCounter: [],
     
     init: function(){
         var cols = 4;
@@ -32,7 +33,6 @@ var Memory = {
                 a.appendChild(brickDefault);
                 td.appendChild(a);
                 Memory.turnBrick(brickID, a);
-                console.log(brickID);
                 brickID +=1;
                 
             }
@@ -41,12 +41,29 @@ var Memory = {
        
    },
    turnBrick: function(brickID, a){
+   
        a.onclick = function(e){
            e.preventDefault;
-           var img = a.querySelector("img");
-           img.src = "pics/" + Memory.bricks[brickID] + ".png";
+
+           Memory.brickCounter.push(a);
+           if (Memory.brickCounter.length <= 2) {
+                var img = a.querySelector("img");
+                img.src = "pics/" + Memory.bricks[brickID] + ".png";
+           }
+           if (Memory.brickCounter.length > 2) {
+               setTimeout(function() {
+                   Memory.turnBack();
+               }, 500);
+           }
            
        };
+       
+   },
+   turnBack: function(brickID, a){
+       Memory.brickCounter[0].querySelector("img").src = "pics/0.png";
+       Memory.brickCounter[1].querySelector("img").src = "pics/0.png";
+       Memory.brickCounter = [];
+       
    }
 };
 
