@@ -9,6 +9,7 @@ var Memory = {
     rows: 4,
     
     init: function(){
+        
         if (Memory.cols*Memory.rows > 16) {
             throw new Error("Det finns inte tillräckligt med bilder för sånt här stort memory!");
         }
@@ -75,11 +76,7 @@ var Memory = {
            Memory.pairCounter += 1;
            if (Memory.pairCounter === (Memory.rows*Memory.cols/2)) {
                Memory.message("Spelet är slut, du vann! Antal försök: " + Memory.attemptCounter);
-               
-              /* if (confirm("Du vann! Vill du spela igen?")) {
-                   Memory.renderBoard(Memory.rows, Memory.cols);
-               }
-              */ 
+
            }
            
        }
