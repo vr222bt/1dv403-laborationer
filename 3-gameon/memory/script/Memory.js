@@ -53,7 +53,7 @@ var Memory = {
        a.addEventListener("click", function(e){
            e.preventDefault();
            var img = a.querySelector("img");
-           if (img.src !== "https://preview.c9.io/vr222bt/1dv403-laborationer/3-gameon/memory/pics/0.png" ) { //Varför funkar inte relativa sökvägar?
+           if (img.getAttribute("src") !== "pics/0.png" ) { 
                return false;
            }
            Memory.brickCounter.push(a);
@@ -70,7 +70,7 @@ var Memory = {
        });
        
    },
-   compareBrick: function(brickID, a){
+   compareBrick: function(){
        Memory.attemptCounter += 1;
        if (Memory.brickCounter[0].querySelector("img").src === Memory.brickCounter[1].querySelector("img").src) {
            Memory.pairCounter += 1;
