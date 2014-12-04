@@ -3,12 +3,13 @@
 var Memory = {
     bricks: [],
     brickCounter: [],
+    pairCounter: 0,
+    cols: 4,
+    rows: 4,
     
     init: function(){
-        var cols = 4;
-        var rows = 4;
-        Memory.bricks = RandomGenerator.getPictureArray(rows,cols);
-        Memory.renderBoard(rows,cols);
+        Memory.bricks = RandomGenerator.getPictureArray(Memory.rows,Memory.cols);
+        Memory.renderBoard(Memory.rows,Memory.cols);
         
         
        
@@ -42,26 +43,42 @@ var Memory = {
    },
    turnBrick: function(brickID, a){
    
-       a.onclick = function(e){
-           e.preventDefault;
-
+       a.addEventListener("click", function(e){
+           e.preventDefault();
+           var img = a.querySelector("img");
+           if (img.src !== "https://preview.c9.io/vr222bt/1dv403-laborationer/3-gameon/memory/pics/0.png" ) { //Varför funkar inte relativa sökvägar?
+               return false;
+           }
            Memory.brickCounter.push(a);
            if (Memory.brickCounter.length <= 2) {
-                var img = a.querySelector("img");
+                
                 img.src = "pics/" + Memory.bricks[brickID] + ".png";
            }
-           if (Memory.brickCounter.length > 2) {
+           if (Memory.brickCounter.length === 2) {
                setTimeout(function() {
                    Memory.turnBack();
                }, 500);
            }
            
-       };
+       });
        
    },
    turnBack: function(brickID, a){
+       if (Memory.brickCounter[0].querySelector("img").src === Memory.brickCounter[1].querySelector("img").src) {
+           Memory.pairCounter += 1;
+           if (Memory.pairCounter === (Memory.rows*Memory.cols/2)) {
+               if (confirm("Du vann! Vill du spela igen?")) {
+                   Memory.renderBoard(Memory.rows, Memory.cols);
+               }
+               
+           }
+           
+       }
+       else {
        Memory.brickCounter[0].querySelector("img").src = "pics/0.png";
        Memory.brickCounter[1].querySelector("img").src = "pics/0.png";
+       
+       }
        Memory.brickCounter = [];
        
    }
