@@ -4,10 +4,13 @@ var Memory = {
     bricks: [],
     brickCounter: [],
     pairCounter: 0,
-    cols: 4,
+    attemptCounter: 0,
+    cols: 2, 
     rows: 4,
     
     init: function(){
+        Memory.pairCounter = 0;
+        Memory.attemptCounter = 0;
         Memory.bricks = RandomGenerator.getPictureArray(Memory.rows,Memory.cols);
         Memory.renderBoard(Memory.rows,Memory.cols);
         
@@ -56,21 +59,24 @@ var Memory = {
            }
            if (Memory.brickCounter.length === 2) {
                setTimeout(function() {
-                   Memory.turnBack();
+                   Memory.compareBrick();
                }, 500);
            }
            
        });
        
    },
-   turnBack: function(brickID, a){
+   compareBrick: function(brickID, a){
+       Memory.attemptCounter += 1;
        if (Memory.brickCounter[0].querySelector("img").src === Memory.brickCounter[1].querySelector("img").src) {
            Memory.pairCounter += 1;
            if (Memory.pairCounter === (Memory.rows*Memory.cols/2)) {
-               if (confirm("Du vann! Vill du spela igen?")) {
+               Memory.message("Spelet är slut, du vann! Antal försök: " + Memory.attemptCounter);
+               
+              /* if (confirm("Du vann! Vill du spela igen?")) {
                    Memory.renderBoard(Memory.rows, Memory.cols);
                }
-               
+              */ 
            }
            
        }
@@ -79,9 +85,29 @@ var Memory = {
        Memory.brickCounter[1].querySelector("img").src = "pics/0.png";
        
        }
+       console.log(Memory.attemptCounter);
        Memory.brickCounter = [];
        
+   },
+   message: function(text){
+        var gameTable = document.querySelector("#gameTable");
+        var p = document.createElement("p");
+        p.id = "score";
+        p.innerHTML = text;
+        gameTable.appendChild(p);
+       
+        var button = document.createElement("input");
+        button.type = "button";
+        button.value = "Spela igen";
+        button.onclick = function(e){
+            e.preventDefault();
+            Memory.init();
+        };
+        gameTable.appendChild(button);
+ 
+       
    }
+   
 };
 
 window.onload = Memory.init;
