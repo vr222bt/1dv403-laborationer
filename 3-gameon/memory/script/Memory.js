@@ -5,10 +5,13 @@ var Memory = {
     brickCounter: [],
     pairCounter: 0,
     attemptCounter: 0,
-    cols: 2, 
+    cols: 4, 
     rows: 4,
     
     init: function(){
+        if (Memory.cols*Memory.rows > 16) {
+            throw new Error("Det finns inte tillräckligt med bilder för sånt här stort memory!");
+        }
         Memory.pairCounter = 0;
         Memory.attemptCounter = 0;
         Memory.bricks = RandomGenerator.getPictureArray(Memory.rows,Memory.cols);
