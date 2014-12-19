@@ -2,6 +2,7 @@
 
 
 var Quiz = {
+    newURL: "http://vhost3.lnu.se:20080/question/1",
     init: function(){
         Quiz.getQuestion();
         
@@ -19,10 +20,10 @@ var Quiz = {
         xhr.onreadystatechange = function (){
             if (xhr.readyState === 4) {
                 if (xhr.status == 200) {
-                    console.log(xhr.responseText);
                     var response = JSON.parse(xhr.responseText);
                     console.log(response);
                     Quiz.render(response);
+                    Quiz.newURL = response.nextURL;
                     var button = document.querySelector("#button");
                     button.onclick = function(){
                         Quiz.sendAnswer(response);
@@ -32,7 +33,7 @@ var Quiz = {
             
         };
         
-        xhr.open("GET", "http://vhost3.lnu.se:20080/question/1", true);
+        xhr.open("GET", Quiz.newURL , true);
         
         xhr.send(null);
         
@@ -44,13 +45,19 @@ var Quiz = {
         xhr.onreadystatechange = function(){
             if (xhr.readyState === 4 ) {
                 if (xhr.status === 200) {
-                    console.log(xhr.responseText);
+                    var newResponse = JSON.parse(xhr.responseText);
+                    console.log(newResponse);
+                    Quiz.newURL = newResponse.nextURL;
+                    Quiz.getQuestion();
                 }
-                else
-                    console.log(xhr.responseText);
+                else{
+                    var newResponse2 = JSON.parse(xhr.responseText);
+                    console.log(newResponse2);
+                }
+                   
             }
         };
-        xhr.open("POST", response.nextURL, true);
+        xhr.open("POST", Quiz.newURL, true);
         xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
         var answer = document.querySelector("#answer").value;
         console.log(answer);
