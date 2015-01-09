@@ -4,6 +4,16 @@
 var Quiz = {
     newURL: "http://vhost3.lnu.se:20080/question/1",
     init: function(){
+        
+       /* textarea.onkeypress = function(e){
+          if (!e) {  
+              e = window.event; 
+              }  
+          if (e.keyCode === 13 && !e.shiftKey) {
+              e.preventDefault();
+              messageBoard.createMessage(textarea);
+          }
+     */
         Quiz.getQuestion();
         
 
@@ -25,8 +35,19 @@ var Quiz = {
                     Quiz.render(response);
                     Quiz.newURL = response.nextURL;
                     var button = document.querySelector("#button");
-                    button.onclick = function(){
+                    button.onclick = function(e){
+                        e.preventDefault();
                         Quiz.sendAnswer(response);
+                    };
+                    var textarea = document.querySelector("#answer");
+                    textarea.onkeypress = function(e){
+                      if (!e) {  
+                          e = window.event; 
+                          }  
+                      if (e.keyCode === 13) {
+                          e.preventDefault();
+                          Quiz.sendAnswer(response);
+                      }
                     };
                 }
             }
@@ -47,8 +68,13 @@ var Quiz = {
                 if (xhr.status === 200) {
                     var newResponse = JSON.parse(xhr.responseText);
                     console.log(newResponse);
+                    Quiz.correctMessage(answer);
                     Quiz.newURL = newResponse.nextURL;
                     Quiz.getQuestion();
+                    
+                }
+                if (xhr.status === 400) {
+                    Quiz.wrongMessage(answer);
                 }
                 else{
                     var newResponse2 = JSON.parse(xhr.responseText);
@@ -67,6 +93,16 @@ var Quiz = {
         };
         xhr.send(JSON.stringify(rply));
        
+    },
+    correctMessage: function(answer){
+        document.querySelector("#button").classList.remove("error");
+        var question = document.querySelector("p:first-child");
+        var p = document.createElement("p");
+        p.innerHTML = "Rätt! (" + answer +")";
+        question.appendChild(p);
+    },
+    wrongMessage: function(answer){
+        document.querySelector("#button").className = "error";
     }
     
 };
