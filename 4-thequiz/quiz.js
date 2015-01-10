@@ -4,25 +4,13 @@
 var Quiz = {
     newURL: "http://vhost3.lnu.se:20080/question/1",
     init: function(){
-        
-       /* textarea.onkeypress = function(e){
-          if (!e) {  
-              e = window.event; 
-              }  
-          if (e.keyCode === 13 && !e.shiftKey) {
-              e.preventDefault();
-              messageBoard.createMessage(textarea);
-          }
-     */
         Quiz.getQuestion();
-        
-
     },
     render: function(response){
-        var main = document.querySelector("main");
-        var question = document.createElement("p");
+        
+        var question = document.querySelector("#question");
         question.innerHTML = response.question;
-        main.insertBefore(question, main.firstChild);
+
     },
     getQuestion: function(){
         var xhr = new XMLHttpRequest();
@@ -95,14 +83,17 @@ var Quiz = {
        
     },
     correctMessage: function(answer){
+        //Ta bort felmeddelande
         document.querySelector("#button").classList.remove("error");
-        var question = document.querySelector("p:first-child");
-        var p = document.createElement("p");
-        p.innerHTML = "Rätt! (" + answer +")";
-        question.appendChild(p);
+        var pError = document.querySelector("#error");
+        pError.innerHTML = "";
+
     },
     wrongMessage: function(answer){
         document.querySelector("#button").className = "error";
+        var p = document.querySelector("#error");
+        p.innerHTML = "Fel svar (" + answer +")";
+        
     }
     
 };
