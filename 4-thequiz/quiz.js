@@ -3,6 +3,9 @@
 
 var Quiz = {
     newURL: "http://vhost3.lnu.se:20080/question/1",
+    guesses: 0,
+    totalGuesses: [],
+    
     init: function(){
         Quiz.getQuestion();
     },
@@ -54,6 +57,10 @@ var Quiz = {
         xhr.onreadystatechange = function(){
             if (xhr.readyState === 4 ) {
                 if (xhr.status === 200) {
+                    Quiz.guesses += 1;
+                    Quiz.totalGuesses.push(Quiz.guesses);
+                    Quiz.guesses = 0;
+                    console.log(Quiz.totalGuesses);
                     var newResponse = JSON.parse(xhr.responseText);
                     console.log(newResponse);
                     Quiz.correctMessage(answer);
@@ -62,6 +69,7 @@ var Quiz = {
                     
                 }
                 if (xhr.status === 400) {
+                    Quiz.guesses += 1;
                     Quiz.wrongMessage(answer);
                 }
                 else{
@@ -83,7 +91,6 @@ var Quiz = {
        
     },
     correctMessage: function(answer){
-        //Ta bort felmeddelande
         document.querySelector("#button").classList.remove("error");
         var pError = document.querySelector("#error");
         pError.innerHTML = "";
