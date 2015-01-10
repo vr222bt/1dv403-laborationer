@@ -103,11 +103,15 @@ var Quiz = {
     wrongMessage: function(answer){
         document.querySelector("#button").className = "error";
         var p = document.querySelector("#error");
+        p.className = "error";
         p.innerHTML = "Fel svar (" + answer +")";
         
     },
     scoreScreen: function(){
         var main = document.querySelector("main");
+        var header = document.createElement("h2");
+        header.innerHTML = "Resultat:";
+        main.appendChild(header);
         var table = document.createElement("table");
         var tbody = document.createElement("tbody");
         table.appendChild(tbody);
