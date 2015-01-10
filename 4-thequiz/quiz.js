@@ -66,6 +66,10 @@ var Quiz = {
                     Quiz.correctMessage(answer);
                     Quiz.newURL = newResponse.nextURL;
                     Quiz.getQuestion();
+                    if (newResponse.nextURL === undefined) {
+                        Quiz.scoreScreen();
+                        alert("du vann");
+                    }
                     
                 }
                 if (xhr.status === 400) {
@@ -101,8 +105,42 @@ var Quiz = {
         var p = document.querySelector("#error");
         p.innerHTML = "Fel svar (" + answer +")";
         
+    },
+    scoreScreen: function(){
+        var main = document.querySelector("main");
+        var table = document.createElement("table");
+        var tbody = document.createElement("tbody");
+        table.appendChild(tbody);
+        
+        for (var i = 0; i < 2; i++) {
+            var tr = document.createElement("tr");
+            tbody.appendChild(tr);
+            for (var j = 0; j < Quiz.totalGuesses.length + 1; j++) {
+                        var td = document.createElement("td");
+                        if (j === 0 && i === 0) {
+                            td.innerHTML = "Fråga";
+                        }
+                        else if (i === 0) {
+                            td.innerHTML = j;
+                        }
+                        else {
+                            if (j === 0 && i === 1) {
+                                td.innerHTML = "Försök";
+                            }
+                            else{
+                                td.innerHTML = Quiz.totalGuesses[j - 1];
+                            }
+                            
+                        }
+                        
+
+                        tr.appendChild(td);
+            }
+        }
+        
+        main.appendChild(table);
+
     }
-    
 };
 
 window.onload = Quiz.init;
