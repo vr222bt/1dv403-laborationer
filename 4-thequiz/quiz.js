@@ -68,7 +68,7 @@ var Quiz = {
                     Quiz.getQuestion();
                     if (newResponse.nextURL === undefined) {
                         Quiz.scoreScreen();
-                        alert("du vann");
+                        
                     }
                     
                 }
@@ -111,6 +111,7 @@ var Quiz = {
         var main = document.querySelector("main");
         var header = document.createElement("h2");
         header.innerHTML = "Resultat:";
+
         main.appendChild(header);
         var table = document.createElement("table");
         var tbody = document.createElement("tbody");
