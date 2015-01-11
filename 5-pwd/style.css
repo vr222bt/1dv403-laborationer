@@ -1,0 +1,40 @@
+body
+        {
+            margin-top: 0px;
+        }
+
+#container
+        {
+            height: 640px;
+            width: 1024px;
+            margin-left: auto;
+            margin-right: auto;
+        	background-image: url("pics/Black-Background.jpeg");
+        }
+        
+#desk
+        {
+            height: 600px;
+        }
+        
+#bar
+        {
+            height: 34px;
+            border-top-color: black;
+            border-top-style: solid;
+            border-top-width: 6px;
+        }
+        
+#bar img
+        {
+            height: 28px;
+            padding-top: 2px;
+            padding-left:2px;
+            
+        }
+        
+body
+        {
+
+            background-color: gray;
+        }
