@@ -1,22 +1,34 @@
 "use strict";
 
 var Window = {
+    windowCounter: 0,
     init: function(){
       Window.startWindow(); 
       
       
     },
     startWindow: function(){
+        
         var button = document.querySelector("#bar img");
-        button.onclick = function(){
-            Window.createWindow();
-        };
-        Window.toggleWindow();
+        if (Window.windowCounter === 0) {
+            button.onclick = function(){
+                if (Window.windowCounter === 0) {
+                    Window.createWindow();
+                    Window.windowCounter += 1;
+                }
+                
+                console.log("Started " + Window.windowCounter);
+            };
+            
+        }
+ 
     },
     toggleWindow: function(target){
         var targetWindow = target.parentNode.parentNode;
         var windowDiv = targetWindow;
-        windowDiv.classList.add("hide");
+        windowDiv.classList.toggle("hide");
+        Window.windowCounter -= 1;
+        console.log("Toggle " + Window.windowCounter);
 
     },
     createWindow: function(){
