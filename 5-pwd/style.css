@@ -19,6 +19,7 @@ body
         
 #bar
         {
+            position: relative;
             height: 34px;
             border-top-color: black;
             border-top-style: solid;
@@ -27,9 +28,17 @@ body
         
 #bar img
         {
+            position: absolute;
+            bottom: 2px;
             height: 28px;
             padding-top: 2px;
             padding-left:2px;
+            transition: height 0.5s ease-in-out;
+        }
+        
+#bar img:hover
+        {
+            height: 40px;
             
         }
         
@@ -37,4 +46,79 @@ body
         {
 
             background-color: gray;
+        }
+
+/* Window */
+
+.window
+        {
+            height: 300px;
+            width: 180px;
+            position: relative;
+            top: 50px;
+            left: 50px;
+
+
+        }
+        
+.window header
+        {
+            background-color: SteelBlue;
+            height: 30px;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            border-top: 5px solid;
+            border-color: SteelBlue;
+        }
+.window header img
+        {
+            
+            height: 15px;
+            padding-left: 4px;
+            padding-right: 4px;
+        }
+.icon
+        {
+            float: left;
+        }
+
+.close
+        {
+            float: right;
+        }
+        
+.window header p
+        {
+            margin: 0;
+            font-size: 12px;
+        }
+        
+.window main
+        {
+            background-color: gray;
+            height:83.3333333333%;
+
+        }
+        
+.window footer
+        {
+            background-color: SteelBlue;
+            height: 20px;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+            border-bottom: 5px solid;
+            border-color: SteelBlue;
+        }
+        
+.window footer img
+        {
+            height: 15px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            padding-left: 5px;
+        }
+        
+.hide
+        {
+            display: none;
         }
