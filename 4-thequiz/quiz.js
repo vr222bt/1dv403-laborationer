@@ -88,7 +88,6 @@ var Quiz = {
         var answer = document.querySelector("#answer").value;
         console.log(answer);
         var rply = {
-            id: 1,
             answer: answer,
         };
         xhr.send(JSON.stringify(rply));
