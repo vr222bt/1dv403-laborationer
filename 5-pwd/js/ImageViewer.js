@@ -26,18 +26,16 @@ var Imageviewer = {
          xhr.send(null);
   },
   renderImages: function(response){
-      var content = document.querySelector(".content");
       var heights = [];
       var widths = [];
       for (var j = 0; j < response.length; j++) {
           heights[j] = response[j].thumbHeight;
           widths[j] = response[j].thumbWidth;
       }
-      
       var maxHeight = Math.max.apply(Math, heights);
       var maxWidth = Math.max.apply(Math, widths);
 
-     
+      var content = document.querySelector(".content");
       for (var i = 0; i < response.length; i++) {
         var img = document.createElement("img");
         img.src = response[i].thumbURL;

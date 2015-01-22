@@ -4,12 +4,9 @@ var Window = {
     windowCounter: 0,
     init: function(){
         Window.startWindow(); 
-
-      
-      
     },
+    
     startWindow: function(){
-        
         var button = document.querySelector("#imgViewer");
         //Bara ett fönster åt gången tills det kan hanteras flera
         if (Window.windowCounter === 0) {
@@ -20,10 +17,9 @@ var Window = {
                     Window.windowCounter += 1;
                 }
             };
-            
         }
- 
     },
+    
     toggleWindow: function(target){
         var targetWindow = target.parentNode.parentNode;
         var windowDiv = targetWindow;
@@ -35,12 +31,14 @@ var Window = {
 
 
     },
+    
     createWindow: function(head, icon){
         var div = document.querySelector("#desk");
         
         var windowDiv = document.createElement("div");
         windowDiv.className = "window";
         
+        //Header
         var header = document.createElement("header");
         windowDiv.appendChild(header);
         
@@ -62,11 +60,12 @@ var Window = {
         p.innerHTML = head || "Test";
         header.appendChild(p);
         
-        
+        //Content
         var mainContent = document.createElement("div");
         mainContent.classList.add("content");
         windowDiv.appendChild(mainContent);
         
+        //Footer
         var footer = document.createElement("footer");
         windowDiv.appendChild(footer);
         

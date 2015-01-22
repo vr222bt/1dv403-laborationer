@@ -60,7 +60,7 @@ body
 
 
         }
-        
+/* Window header */          
 .window header
         {
             background-color: SteelBlue;
@@ -86,7 +86,7 @@ body
         {
             float: right;
         }
-/* Window header */        
+     
 .window header p
         {
             margin: 0;
