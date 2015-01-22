@@ -3,13 +3,15 @@
 var Window = {
     windowCounter: 0,
     init: function(){
-      Window.startWindow(); 
+        Window.startWindow(); 
+        Imageviewer.getImages();
       
       
     },
     startWindow: function(){
         
         var button = document.querySelector("#bar img");
+        //Bara ett fönster åt gången tills det kan hanteras flera
         if (Window.windowCounter === 0) {
             button.onclick = function(){
                 if (Window.windowCounter === 0) {
@@ -29,6 +31,9 @@ var Window = {
         windowDiv.classList.toggle("hide");
         Window.windowCounter -= 1;
         console.log("Toggle " + Window.windowCounter);
+
+
+
 
     },
     createWindow: function(){
