@@ -40,7 +40,8 @@ var Imageviewer = {
       for (var i = 0; i < response.length; i++) {
         var img = document.createElement("img");
         img.src = response[i].thumbURL;
-        
+        img.URL = response[i].URL;
+        img.addEventListener("click", Imageviewer.changeBackground);
         var container = document.createElement("div");
         container.classList.add("imgContainer");
         container.style.width = maxWidth + "px";
@@ -57,6 +58,10 @@ var Imageviewer = {
       }
         Window.toggleLoading();
 
+  },
+  changeBackground: function(){
+    var container = document.querySelector("#container");
+    container.style.backgroundImage = "url(" + this.URL + ")";  
   }
 };
 
