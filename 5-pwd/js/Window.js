@@ -4,7 +4,7 @@ var Window = {
     windowCounter: 0,
     init: function(){
         Window.startWindow(); 
-        Imageviewer.getImages();
+
       
       
     },
@@ -28,7 +28,8 @@ var Window = {
     toggleWindow: function(target){
         var targetWindow = target.parentNode.parentNode;
         var windowDiv = targetWindow;
-        windowDiv.classList.toggle("hide");
+        var desk = document.getElementById("desk");
+        desk.removeChild(windowDiv);
         Window.windowCounter -= 1;
         console.log("Toggle " + Window.windowCounter);
 
@@ -64,8 +65,9 @@ var Window = {
         header.appendChild(p);
         
         
-        var main = document.createElement("main");
-        windowDiv.appendChild(main);
+        var mainContent = document.createElement("div");
+        mainContent.classList.add("content");
+        windowDiv.appendChild(mainContent);
         
         var footer = document.createElement("footer");
         windowDiv.appendChild(footer);
@@ -78,6 +80,8 @@ var Window = {
         footer.appendChild(imgStatus);
         
         div.appendChild(windowDiv);
+        
+        Imageviewer.getImages();
         
     }
 };
