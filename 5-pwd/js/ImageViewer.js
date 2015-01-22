@@ -5,6 +5,7 @@ var Imageviewer = {
       
   },
   getImages: function(){
+
        var xhr = new XMLHttpRequest();
        
        xhr.onreadystatechange = function (){
@@ -48,7 +49,13 @@ var Imageviewer = {
         container.appendChild(img);
         
         content.appendChild(container);
+        
+
+        
+
+
       }
+        Window.toggleLoading();
 
   }
 };

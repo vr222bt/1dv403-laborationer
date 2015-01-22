@@ -80,9 +80,14 @@ var Window = {
         footer.appendChild(imgStatus);
         
         div.appendChild(windowDiv);
-        
+        Window.toggleLoading();
         Imageviewer.getImages();
+
         
+    },
+    toggleLoading: function(){
+        var imgStatus = document.querySelector("footer img");
+        imgStatus.classList.toggle("hide");
     }
 };
 
