@@ -23,7 +23,6 @@ var Imageviewer = {
          xhr.send(null);
   },
   renderImages: function(response){
-      console.log(response);
       var content = document.querySelector(".content");
       var heights = [];
       var widths = [];
@@ -33,9 +32,8 @@ var Imageviewer = {
       }
       
       var maxHeight = Math.max.apply(Math, heights);
-      console.log(maxHeight);
       var maxWidth = Math.max.apply(Math, widths);
-      console.log(maxWidth);
+
      
       for (var i = 0; i < response.length; i++) {
         var img = document.createElement("img");

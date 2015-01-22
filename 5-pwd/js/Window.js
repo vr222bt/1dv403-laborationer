@@ -18,8 +18,6 @@ var Window = {
                     Window.createWindow();
                     Window.windowCounter += 1;
                 }
-                
-                console.log("Started " + Window.windowCounter);
             };
             
         }
@@ -31,7 +29,6 @@ var Window = {
         var desk = document.getElementById("desk");
         desk.removeChild(windowDiv);
         Window.windowCounter -= 1;
-        console.log("Toggle " + Window.windowCounter);
 
 
 
