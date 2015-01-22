@@ -4,8 +4,11 @@ var Imageviewer = {
   init: function(){
       
   },
+  header: "Image Viewer",
+  icon: "pics/gallery-icon.png",
+  
   getImages: function(){
-
+       Window.toggleLoading();
        var xhr = new XMLHttpRequest();
        
        xhr.onreadystatechange = function (){
@@ -46,12 +49,7 @@ var Imageviewer = {
         container.style.height = maxHeight + "px";
         
         container.appendChild(img);
-        
         content.appendChild(container);
-        
-
-        
-
 
       }
         Window.toggleLoading();

@@ -10,12 +10,13 @@ var Window = {
     },
     startWindow: function(){
         
-        var button = document.querySelector("#bar img");
+        var button = document.querySelector("#imgViewer");
         //Bara ett fönster åt gången tills det kan hanteras flera
         if (Window.windowCounter === 0) {
             button.onclick = function(){
                 if (Window.windowCounter === 0) {
-                    Window.createWindow();
+                    Window.createWindow(Imageviewer.header, Imageviewer.icon);
+                    Imageviewer.getImages();
                     Window.windowCounter += 1;
                 }
             };
@@ -34,7 +35,7 @@ var Window = {
 
 
     },
-    createWindow: function(){
+    createWindow: function(head, icon){
         var div = document.querySelector("#desk");
         
         var windowDiv = document.createElement("div");
@@ -44,7 +45,7 @@ var Window = {
         windowDiv.appendChild(header);
         
         var img = document.createElement("img");
-        img.src = "pics/test-icon.jpg";
+        img.src = icon || "pics/test-icon.jpg";
         img.className = "icon";
         header.appendChild(img);
         
@@ -58,7 +59,7 @@ var Window = {
         header.appendChild(imgClose);
         
         var p = document.createElement("p");
-        p.innerHTML = "Test";
+        p.innerHTML = head || "Test";
         header.appendChild(p);
         
         
@@ -77,8 +78,8 @@ var Window = {
         footer.appendChild(imgStatus);
         
         div.appendChild(windowDiv);
-        Window.toggleLoading();
-        Imageviewer.getImages();
+
+
 
         
     },
